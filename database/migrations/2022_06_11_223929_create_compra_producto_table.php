@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('detallecompras', function (Blueprint $table) {
+        Schema::create('compra_producto', function (Blueprint $table) {
             $table->id();
 
             $table->integer('cantidad');

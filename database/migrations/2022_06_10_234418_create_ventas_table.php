@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sales', function (Blueprint $table) {
+        Schema::create('ventas', function (Blueprint $table) {
             $table->id();
 
             $table->float('PrecioVenta', 2);
