@@ -4,21 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Compra extends Model
+class Venta extends Model
 {
     use HasFactory;
 
-    /* uno a muchos inverso */
-    public function proveedore()
-    {
-        return $this->belongsTo(Proveedore::class);
-    }
-
+    /* uno a muchos inversa */
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
     }
 
     /* muchos a muchos */

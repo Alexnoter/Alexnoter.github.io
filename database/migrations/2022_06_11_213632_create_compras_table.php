@@ -19,10 +19,10 @@ return new class extends Migration
             $table->float('PrecioCompra', 2);
 
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('proveedor_id');
+            $table->unsignedBigInteger('proveedore_id');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('proveedor_id')->references('id')->on('proveedores')->onDelete('cascade');
+            $table->foreign('proveedore_id')->references('id')->on('proveedores')->onDelete('cascade');
 
             $table->timestamps();
         });
