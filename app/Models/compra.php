@@ -13,17 +13,17 @@ class Compra extends Model
     /* uno a muchos inverso */
     public function proveedore()
     {
-        return $this->belongsTo(Proveedore::class);
+        return $this->belongsTo(Proveedore::class, 'proveedore_id');
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /* muchos a muchos */
     public function productos()
     {
-        return $this->belongsToMany(Producto::class);
+        return $this->belongsToMany(Producto::class, 'producto_id');
     }
 }

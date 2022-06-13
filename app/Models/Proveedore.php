@@ -12,6 +12,6 @@ class Proveedore extends Model
     /* uno a muchos */
     public function compras()
     {
-        return $this->hasMany(Compra::class);
+        return $this->hasMany(Compra::class, 'compra_id');
     }
 }

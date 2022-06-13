@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Client extends Model
+class Categoria extends Model
 {
     use HasFactory;
 
     /* uno a muchos */
-    public function ventas()
+    public function productos()
     {
-        return $this->hasMany(Venta::class, 'venta_id');
+        return $this->hasMany(Producto::class, 'producto_id');
     }
 }

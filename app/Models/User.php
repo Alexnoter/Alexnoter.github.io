@@ -62,11 +62,11 @@ class User extends Authenticatable
     /* uno a muchos */
     public function ventas()
     {
-        return $this->hasMany(ventas::class);
+        return $this->hasMany(ventas::class, 'venta_id');
     }
 
     public function compras()
     {
-        return $this->hasMany(Compra::class);
+        return $this->hasMany(Compra::class, 'compra_id');
     }
 }

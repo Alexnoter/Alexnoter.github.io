@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
 
-            $table->float('PrecioCompra', 2);
+            $table->float('PrecioCompra');
 
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('proveedore_id');

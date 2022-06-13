@@ -12,17 +12,17 @@ class Venta extends Model
     /* uno a muchos inversa */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function client()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Client::class, 'client_id');
     }
 
     /* muchos a muchos */
     public function productos()
     {
-        return $this->belongsToMany(Producto::class);
+        return $this->belongsToMany(Producto::class, 'producto_id');
     }
 }
