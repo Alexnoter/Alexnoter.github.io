@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('slug');
             $table->integer('stock');
 
-            $table->text('descripcion')->nullable();
-            $table->enum('estado',[1, 2])->default(1);
+            $table->text('descripcion');
+            $table->enum('estado',[1, 2]);
             $table->float('precioVenta');
             $table->float('precioCompra');
 

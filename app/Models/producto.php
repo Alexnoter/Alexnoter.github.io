@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
     use HasFactory;
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 
     /* muchos a muchos */
     public function ventas()
@@ -20,11 +21,6 @@ class Producto extends Model
         return $this->belongsToMany(Compra::class, 'compra_id');
     }
 
-    public function etiquetas()
-    {
-        return $this->belongsToMany(Etiqueta::class, 'etiqueta_id');
-    }
-
     /* uno a muchos inversa */
     public function categoria()
     {
@@ -34,6 +30,6 @@ class Producto extends Model
     /* relacion uno a uno polimorfica */
     public function image()
     {
-        return $this->morphOne(Image::class, 'imageable');
+        return $this->morphMany(Image::class, 'imageable');
     }
 }
