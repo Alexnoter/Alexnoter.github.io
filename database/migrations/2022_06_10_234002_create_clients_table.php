@@ -18,7 +18,7 @@ return new class extends Migration
 
             $table->string('nombre', 45);
             $table->integer('CI');
-            $table->integer('celular');
+            $table->integer('celular')->nullable();
 
             $table->timestamps();
         });
