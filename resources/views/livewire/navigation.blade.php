@@ -1,4 +1,11 @@
-<header class="bg-trueGray-700">
+<style>
+    #navigation-menu{
+        height: calc(100vh - 4rem);
+    }
+</style>
+
+
+<header class="bg-trueGray-700 sticky top-0">
     <div class="container flex items-center h-16">
         <a
             class="flex flex-col items-center justify-center px-4 bg-white bg-opacity-25 text-white cursor-pointer font-semibold h-full">
@@ -18,7 +25,7 @@
         @livewire('buscador')
 
         
-        <div class="ml-3 relative">
+        <div class="mx-6 relative">
             {{-- con auth nos mostrara solo cuando iniciemos sesion --}}
             @auth
 
@@ -83,4 +90,18 @@
         </div>
 
     </div>
+
+    <nav id="navigation-menu" class="absolute w-full">
+        <div class="w-full">
+            <ul class="bg-trueGray-700 bg-opacity-75 flex justify-around">
+                @foreach ($categorias as $categoria)
+                    <li class="text-white hover:text-opacity-60 py-2">
+                        <a href="" class="py-2 px-4 text-sm flex items-center">
+                            {{ $categoria->nombre }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    </nav>
 </header>
