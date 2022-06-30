@@ -4,14 +4,14 @@
 <header class="bg-trueGray-700 sticky top-0" x-data="{ open: false }">
 
     <div class="container flex items-center h-16" >
-        <a  :class="{'bg-white bg-opacity-25' : open}"
+        <a  :class="{'bg-white text-orange-500 md:bg-opacity-25 md:text-white ' : open}"
             x-on:click="open = !open" {{-- esto me dice que escuchara un evento click y que cambiara al valor inverso de open en cada click --}}
-            class="flex flex-col items-center justify-center px-4  text-white cursor-pointer font-semibold h-full">
+            class="flex flex-col items-center justify-center px-4 order-last md:order-first text-white cursor-pointer font-semibold h-full">
             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                 <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-            <span>Categorias</span>
+            <span class="text-sm hidden md:block">Categorias</span>
         </a>
 
         {{-- <a href="/" class="mx-6">
@@ -20,10 +20,12 @@
         </a> --}}
 
         {{-- hacemo llamado al componente buscador --}}
-        @livewire('buscador')
+        <div class="flex-1 hidden md:block">
+            @livewire('buscador')
+        </div>
 
         
-        <div class="mx-6 relative">
+        <div class="mx-6 relative hidden md:block">
             {{-- con auth nos mostrara solo cuando iniciemos sesion --}}
             @auth
 
@@ -93,7 +95,9 @@
 
     <nav class="absolute w-full"
         x-show="open">{{-- con esto hacemos que  se oculte las categorias su valor es false  para visualizar tiene que ser true --}}
-        <div class="w-full h-screen">
+
+        {{-- computer --}}
+        <div class="w-full hidden md:block">
             <ul :class="{'flex' : open , 'hidden' : !open}"
                 class="bg-trueGray-700 bg-opacity-75 hidden justify-around " x-on:click.away="open = false">{{-- x-on:click.away esto nos dice que si hacemos click en cualquier otro lugar que no sea este contenedor se cerrara --}}
                 @foreach ($categorias as $categoria)
@@ -104,6 +108,65 @@
                     </li>
                 @endforeach
             </ul>
+        </div>
+
+        {{-- mobile --}}
+        <div class="bg-white h-screen overflow-y-auto md:hidden">
+
+            <div class="container py-3 bg-gray-200 mb-2">
+                @livewire('buscador')
+            </div>
+
+            <ul>
+                @foreach ($categorias as $categoria)
+                    <li class="text-trueGray-500 hover:text-white hover:bg-orange-500 py-2">
+                        <a href="" class="py-2 px-4 text-sm flex items-center">
+                            {{ $categoria->nombre }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+
+            <p class="text-trueGray-500 px-4 my-2">USUARIOS</p>
+
+            @auth
+                <a href="{{ route('profile.show') }}" class="py-2 px-4 text-sm flex items-center text-trueGray-500 hover:text-white hover:bg-orange-500">
+                    <span class="flex justify-center  w-9">
+                        <i class="fas fa-address-card"></i>
+                    </span>
+                    Perfil
+                </a>
+                <a href="" 
+                    onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit()"
+                    class="py-2 px-4 text-sm flex items-center text-trueGray-500 hover:text-white hover:bg-orange-500">
+                    <span class="flex justify-center  w-9">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </span>
+                    Cerrar sesion
+                </a>
+
+                <form id="logout-form" action=" {{ route('logout') }}" method="POST" class="hidden">
+                    @csrf
+                </form>
+
+            @else
+
+                <a href="{{ route('login') }}" class="py-2 px-4 text-sm flex items-center text-trueGray-500 hover:text-white hover:bg-orange-500">
+                    <span class="flex justify-center  w-9">
+                        <i class="fas fa-user-circle"></i>
+                    </span>
+                    Iniciar Sesion
+                </a>
+                <a href="{{ route('register') }}" class="py-2 px-4 text-sm flex items-center text-trueGray-500 hover:text-white hover:bg-orange-500">
+                    <span class="flex justify-center  w-9">
+                        <i class="fas fa-fingerprint"></i>
+                    </span>
+                    Registrarse
+                </a>   
+
+            @endauth
+
         </div>
     </nav>
 </header>
