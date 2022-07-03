@@ -18,8 +18,8 @@ class ImageFactory extends Factory
     {
         return [
             
-            //'url' => 'products/'. $this->faker->image('public/storage/products' ,640 ,480 ,null ,false),
-            'url' => 'productos/'. $this->faker->image('public/storage/productos/' ,640 ,480 ,null, false),
+            'url' => 'productos/' .$this->faker->image('public/storage/productos/' ,640 ,480 ,null, false),
+            
         ];
     }
 }

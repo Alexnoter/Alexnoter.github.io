@@ -27,8 +27,8 @@ class Producto extends Model
         return $this->belongsTo(Categoria::class, 'categoria_id');
     }
 
-    /* relacion uno a uno polimorfica */
-    public function image()
+    /* relacion uno a muchos polimorfica */
+    public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
     }
