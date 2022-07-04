@@ -12,6 +12,13 @@ class Categoria extends Model
     /* protected $guarded = ['id', 'created_at', 'updated_at']; */
     protected $fillable = ['nombre', 'slug'];
 
+    /* con esto decimos que nos tomara el slug y no el id para  que se vea mejor las rutas */
+    public function getRouteKeyName()
+    {
+        return "slug";
+    }
+
+
     /* uno a muchos */
     public function productos()
     {
