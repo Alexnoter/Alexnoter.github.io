@@ -7,6 +7,23 @@
 @stop
 
 @section('content')
+
+    {{-- con esto se visualiza la actualizacion --}}
+    @if (session('info'))
+        <div class="alert alert-success">
+            <strong>{{ session('info') }}</strong>
+        </div>
+    @else
+        @if (session('delete'))
+            <div class="alert alert-danger">
+                <strong>{{ session('delete') }}</strong>
+            </div>
+        @endif
+    @endif
+
+    
+
+
     <div class="card">
 
         <div class="card-header">
