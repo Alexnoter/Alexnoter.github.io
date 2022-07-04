@@ -259,9 +259,9 @@ return [
             'icon' => 'fab fa-fw fa-buffer',
         ],
         [
-            'text' => 'change_password',
+            'text' => 'Productos',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-archive',
         ],
         [
             'text'    => 'multilevel',
