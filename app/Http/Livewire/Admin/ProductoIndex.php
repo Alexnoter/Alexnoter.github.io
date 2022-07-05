@@ -17,10 +17,21 @@ class ProductoIndex extends Component
     protected $paginationTheme = "bootstrap";
 
 
+    public $search;
+
+    /* esto me reseteara la paginacion para que no ahiga error en la busqueda cuando estemos en otra  pagina */
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
 
     public function render()
     {
-        $productos = Producto::where('id', '>', 0)->latest('id')->paginate(15);
+        $productos = Producto::where('id', '>', 0)
+                                ->latest('id')
+                                ->where('nombre', 'LIKE', '%' . $this->search . '%')
+                                ->paginate(15);
 
         return view('livewire.admin.producto-index', compact('productos'));
     }

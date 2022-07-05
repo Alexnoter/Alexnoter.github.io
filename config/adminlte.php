@@ -263,6 +263,11 @@ return [
             'route'  => 'admin.productos.index',
             'icon' => 'fas fa-fw fa-archive',
         ],
+        [
+            'text' => 'Crear producto',
+            'route'  => 'admin.productos.create',
+            'icon' => 'fas fa-box-open',
+        ],
         ['header' => 'labels'],
         [
             'text'       => 'important',
