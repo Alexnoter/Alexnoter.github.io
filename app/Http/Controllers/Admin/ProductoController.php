@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Producto;
+
 class ProductoController extends Controller
 {
     /**
@@ -14,7 +16,7 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.productos.index');
     }
 
     /**
@@ -24,7 +26,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.productos.create');
     }
 
     /**
@@ -44,7 +46,7 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Producto $producto)
     {
         //
     }
@@ -55,9 +57,9 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Producto $producto)
     {
-        //
+        return view('admin.productos.edit', compact('producto'));
     }
 
     /**
@@ -67,7 +69,7 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Producto $producto)
     {
         //
     }
@@ -78,7 +80,7 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Producto $producto)
     {
         //
     }
