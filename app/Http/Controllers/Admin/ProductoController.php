@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Producto;
 
+use App\Models\Categoria;
+
 class ProductoController extends Controller
 {
     /**
@@ -26,7 +28,11 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('admin.productos.create');
+        /* metodo pluck me retorna un array pero solo el valor que  le especifiquemos 
+        en el segundo parametro especificamos que propiedad del objeto sera  la llave  "1": "hogar"*/
+        $categorias = Categoria::pluck('nombre', 'id');
+
+        return view('admin.productos.create', compact('categorias'));
     }
 
     /**
