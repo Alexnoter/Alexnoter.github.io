@@ -9,6 +9,8 @@ use App\Models\Producto;
 
 use App\Models\Categoria;
 
+use App\Http\Requests\StoreProductoRequest;
+
 class ProductoController extends Controller
 {
     /**
@@ -41,9 +43,17 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductoRequest $request)
     {
-        //
+        
+        $producto = Producto::create($request->all());
+
+        if ($producto->estado == 1) {
+            return redirect()->route('admin.productos.index')->with('borrador', 'El producto ha sido guardado en borrador');
+        }else {
+            return redirect()->route('admin.productos.index')->with('info', 'El producto ha sido creado satisfactoriamente');
+        }
+
     }
 
     /**

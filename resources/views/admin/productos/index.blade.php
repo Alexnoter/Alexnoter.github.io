@@ -7,6 +7,17 @@
 @stop
 
 @section('content')
+    @if (session('info'))
+        <div class="alert alert-success">
+            <strong>{{ session('info') }}</strong>
+        </div>
+    @else
+        @if (session('borrador'))
+            <div class="alert alert-warning">
+                <strong>{{ session('borrador') }}</strong>
+            </div>
+        @endif
+    @endif
     @livewire('admin.producto-index')
 @stop
 

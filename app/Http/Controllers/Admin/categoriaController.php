@@ -38,7 +38,7 @@ class categoriaController extends Controller
         ]);
 
         /* creamos y almacenamor todo  los datos que le mandemos en el formulario */
-        $categoria = Categoria::create($request->all());
+        Categoria::create($request->all());
         
         /* return $request->all(); */
         /* redireccionamos a una ruta */
