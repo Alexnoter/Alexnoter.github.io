@@ -9,7 +9,7 @@ use App\Models\Producto;
 
 use App\Models\Categoria;
 
-use App\Http\Requests\StoreProductoRequest;
+use App\Http\Requests\ProductoRequest;
 
 class ProductoController extends Controller
 {
@@ -43,7 +43,7 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProductoRequest $request)
+    public function store(ProductoRequest $request)
     {
         
         $producto = Producto::create($request->all());
@@ -75,7 +75,9 @@ class ProductoController extends Controller
      */
     public function edit(Producto $producto)
     {
-        return view('admin.productos.edit', compact('producto'));
+        $categorias = Categoria::pluck('nombre', 'id');
+
+        return view('admin.productos.edit', compact('producto', 'categorias'));
     }
 
     /**
@@ -85,9 +87,11 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Producto $producto)
+    public function update(ProductoRequest $request, Producto $producto)
     {
-        //
+        $producto->update($request->all());
+
+        return redirect()->route('admin.productos.index')->with('info', 'el producto se actualizo con exito');
     }
 
     /**
@@ -98,6 +102,8 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
-        //
+        $producto->delete();
+
+        return redirect()->route('admin.productos.index')->with('delete', 'el producto  se elimino con exito');
     }
 }

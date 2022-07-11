@@ -7,7 +7,17 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <div class="card">
+        <div class="card-body">
+            {!! Form::model($producto, ['route' => ['admin.productos.update', $producto], 'autocomplete' =>  'off', 'method' => 'put']) !!}
+
+                @include('admin.productos.partes.form')
+                
+                {!! Form::submit('Actualizar producto', ['class' => 'btn btn-primary']) !!}
+
+            {!! Form::close() !!}
+        </div>
+    </div>
 @stop
 
 @section('css')
@@ -15,5 +25,24 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+
+    <script src="{{ asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js') }}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+
+    <script>
+        $(document).ready( function() {
+            $("#nombre").stringToSlug({
+                setEvents: 'keyup keydown blur',
+                getPut: '#slug',
+                space: '-'
+            });
+        });
+
+        ClassicEditor
+        .create( document.querySelector( '#descripcion' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+    </script>
+
 @stop

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreProductoRequest extends FormRequest
+class ProductoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,11 +23,17 @@ class StoreProductoRequest extends FormRequest
      */
     public function rules()
     {
+        $producto = $this->route()->parameter('producto');
+
         $reglas = [
             'nombre' => 'required',
             'slug' => 'required|unique:productos',
             'estado' => 'required|in:1,2',
         ];
+
+        if ($producto) {
+            $reglas['slug'] = 'required|unique:productos,slug,' . $producto->id;
+        }
 
         if ($this->estado == 2) {
             $reglas = array_merge($reglas, [

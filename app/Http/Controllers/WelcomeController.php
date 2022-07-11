@@ -11,9 +11,9 @@ class WelcomeController extends Controller
     /* este  metodo incoke se usa para los controladores de un unico metodo */
     public function __invoke()
     {
+        return redirect()->route('login');
+        /* $categorias = Categoria::all();
 
-        $categorias = Categoria::all();
-
-        return view('welcome', compact('categorias'));
+        return view('welcome', compact('categorias')); */
     }
 }

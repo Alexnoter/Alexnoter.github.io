@@ -18,6 +18,11 @@
             </div>
         @endif
     @endif
+    @if (session('delete'))
+            <div class="alert alert-danger">
+                <strong>{{ session('delete') }}</strong>
+            </div>
+        @endif
     @livewire('admin.producto-index')
 @stop
 
