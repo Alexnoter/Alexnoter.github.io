@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\categoriaController;
 use App\Http\Controllers\Admin\ProductoController;
 
-Route::get('', [HomeController::class, 'index']);
+Route::get('', [HomeController::class, 'index'])->name('admin.home');
 /* con esto creamos las 7 rutas necesarias para  un crud */
 Route::resource('categorias', categoriaController::class)->names('admin.categorias');
 
