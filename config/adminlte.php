@@ -259,6 +259,11 @@ return [
             'icon' => 'fab fa-fw fa-buffer',
         ],
         [
+            'text' => 'Usuarios',
+            'route'  => 'admin.users.index',
+            'icon' => 'fas fa-fw fa-users',
+        ],
+        [
             'text' => 'Productos',
             'route'  => 'admin.productos.index',
             'icon' => 'fas fa-fw fa-archive',
@@ -268,22 +273,7 @@ return [
             'route'  => 'admin.productos.create',
             'icon' => 'fas fa-box-open',
         ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+        
     ],
 
     /*
