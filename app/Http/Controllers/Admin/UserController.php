@@ -27,7 +27,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -38,7 +39,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required'
+        ]);
+
+        $user = User::create($request->all());
+        $user->roles()->sync($request->roles);
+
+        return redirect()->route('admin.users.index')->with('info', 'usuario creado con exito');
     }
 
     /**
@@ -47,7 +58,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
         //
     }
@@ -73,9 +84,16 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => "required|unique:users,email,$user->id",
+            
+        ]);
         $user->roles()->sync($request->roles);
+         
+        $user->update($request->all());
 
-        return redirect()->route('admin.users.edit', $user)->with('info', 'asignacion correcta');
+        return redirect()->route('admin.users.index')->with('info', 'Datos actualizados correctamente');
     }
 
     /**
@@ -88,6 +106,6 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('info', 'Usuario Eliminado con exito');
     }
 }

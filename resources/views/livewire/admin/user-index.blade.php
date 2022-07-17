@@ -1,6 +1,7 @@
 <div>
     <div class="card">
         <div class="card-header">
+            <a  class="btn btn-primary mb-3" href="{{ route('admin.users.create') }}">Crear usuario</a>
             <input wire:model="busca" class="form-control" placeholder="ingrese el nombre o correo de un usuario">
         </div>
 
@@ -25,11 +26,11 @@
                                 <td width="10px">
                                     <a class="btn btn-primary" href="{{ route('admin.users.edit', $user) }}">Editar</a>
                                 </td>
-                                <td with='10px'>
+                                <td with="10px">
                                     <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                                        <button class="btn btn-danger" type="submit">Eliminar</button>
                                     </form>
                                 </td>
                             </tr>

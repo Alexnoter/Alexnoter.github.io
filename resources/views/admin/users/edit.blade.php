@@ -3,7 +3,7 @@
 @section('title', 'Bienvenido')
 
 @section('content_header')
-    <h1>Asignar un rol</h1>
+    <h1>Editar Usuario</h1>
 @stop
 
 @section('content')
@@ -17,6 +17,41 @@
     @endif
 
     <div class="card-body">
+        {!! Form::model($user, ['route' => ['admin.users.update', $user],'autocomplete' =>  'off', 'method' => 'put']) !!}
+        
+            <div class="form-group">
+                {!! Form::label('name', 'Nombre :') !!}
+                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'ingrese su nombre']) !!}
+            
+                @error('name')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            
+            </div>
+            <div class="form-group">
+                {!! Form::label('email', 'Correo :') !!}
+                {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'ingrese su correo electronico']) !!}
+            
+                @error('email')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            
+            </div>
+            
+            <div class="form-group">
+                @foreach ($roles as $rol)
+                    <label>
+                        {!! Form::checkbox('roles[]', $rol->id, null, ['class' => 'mr-1']) !!}
+                        {{ $rol->name }}
+                    </label>
+                @endforeach
+            </div>
+
+            {!! Form::submit('Actualizar producto', ['class' => 'btn btn-primary']) !!}
+
+        {!! Form::close() !!}
+    </div>
+    {{-- <div class="card-body">
         <p class="h5">Nombre</p>
         <p class="form-control">{{ $user->name }}</p>
 
@@ -33,7 +68,7 @@
             {!! Form::submit('asignar rol', ['class' => 'btn btn-primary mt-2']) !!}
         {!! Form::close() !!}
         
-    </div>
+    </div> --}}
 @stop
 
 @section('css')
