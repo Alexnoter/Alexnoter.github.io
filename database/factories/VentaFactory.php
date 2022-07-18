@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\Proveedore;
+use App\Models\Client;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Compra>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Venta>
  */
-class CompraFactory extends Factory
+class VentaFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,14 +20,12 @@ class CompraFactory extends Factory
     {
 
         $usuario = User::all()->random();
-        $proveedore = Proveedore::all()->random();
+        $cliente = Client::all()->random();
 
         return [
-            
-            'PrecioCompra' => $this->faker->randomFloat(2,100,2000),
+            'PrecioVenta' => $this->faker->randomFloat(2,14.99,500),
             'user_id' => $usuario->id,
-            'proveedore_id' => $proveedore->id,
-
+            'client_id' => $cliente->id,
         ];
     }
 }

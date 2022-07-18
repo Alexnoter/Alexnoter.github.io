@@ -30,5 +30,6 @@ class ClientSeeder extends Seeder
             'CI' => '879543',
             
         ]);
+        Client::factory(15)->create();
     }
 }

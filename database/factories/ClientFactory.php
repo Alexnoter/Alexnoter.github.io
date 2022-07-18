@@ -19,7 +19,9 @@ class ClientFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nombre' => $this->faker->name(),
+            'CI' => $this->faker->numerify('#######'),
+            'celular' => $this->faker->numerify('########'),
         ];
     }
 }

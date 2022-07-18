@@ -267,6 +267,17 @@ return [
             'can' => 'admin.users.index'
         ],
         [
+            'text' => 'Proveedores',
+            'route'  => 'admin.proveedores.index',
+            'icon' => 'fas fa-fw fa-book',
+        ],
+        [
+            'text' => 'Compra de Productos',
+            'route'  => 'admin.compras.index',
+            'icon' => 'fab fa-fw fa-buffer',
+            
+        ],
+        [
             'text' => 'Productos',
             'route'  => 'admin.productos.index',
             'icon' => 'fas fa-fw fa-archive',

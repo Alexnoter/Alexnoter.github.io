@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <div class="card text-re">
+    <div class="card">
         <div class="card-body">
 
             {!! Form::open(['route' => 'admin.users.store', 'autocomplete' => 'off']) !!}
