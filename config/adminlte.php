@@ -272,6 +272,11 @@ return [
             'icon' => 'fas fa-fw fa-book',
         ],
         [
+            'text' => 'Clientes',
+            'route'  => 'admin.clients.index',
+            'icon' => 'fas fa-fw fa-book',
+        ],
+        [
             'text' => 'Compra de Productos',
             'route'  => 'admin.compras.index',
             'icon' => 'fab fa-fw fa-buffer',

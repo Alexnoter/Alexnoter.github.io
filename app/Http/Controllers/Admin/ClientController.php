@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Proveedore;
-use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
-class ProveedorController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,7 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-        return view('admin.proveedores.index');
+        return view('admin.clientes.index');
     }
 
     /**
@@ -26,7 +24,7 @@ class ProveedorController extends Controller
      */
     public function create()
     {
-        return view('admin.proveedores.create');
+        //
     }
 
     /**
@@ -37,14 +35,7 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required',
-            'celular' => 'required'
-        ]);
-
-        Proveedore::create($request->all());
-
-        return redirect()->route('admin.proveedores.index')->with('info', 'Proveedor creado con exito');
+        //
     }
 
     /**
@@ -53,7 +44,7 @@ class ProveedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Proveedore $proveedore)
+    public function show($id)
     {
         //
     }
@@ -64,9 +55,9 @@ class ProveedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Proveedore $proveedore)
+    public function edit($id)
     {
-        return view('admin.proveedores.edit', compact('proveedore'));
+        //
     }
 
     /**
@@ -76,15 +67,9 @@ class ProveedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Proveedore $proveedore)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'nombre' => 'required',
-            'celular' => 'required'
-        ]);
-        $proveedore->update($request->all());
-        
-        return redirect()->route('admin.proveedores.index')->with('info', 'proveedor actualizado correctamente');
+        //
     }
 
     /**
@@ -93,10 +78,8 @@ class ProveedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Proveedore $proveedore)
+    public function destroy($id)
     {
-        $proveedore->delete();
-
-        return redirect()->route('admin.proveedores.index')->with('info', 'proveedor eliminado correctamente');
+        //
     }
 }

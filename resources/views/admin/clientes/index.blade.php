@@ -3,19 +3,11 @@
 @section('title', 'Bienvenido')
 
 @section('content_header')
-    <h1>Lista de  Proveedores</h1>
+    <h1>Lista de  clientes</h1>
 @stop
 
 @section('content')
-
-    @if (session('info'))
-        <div class="alert alert-success">
-            <strong>{{ session('info') }}</strong>
-        </div>
-    @endif
-
-    @livewire('admin.proveedore-index')
-    
+    @livewire('admin.client-index')
 @stop
 
 @section('css')
