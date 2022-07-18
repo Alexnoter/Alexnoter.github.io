@@ -17,21 +17,25 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $roleA = Role::create(['name' => 'Admin']);
+    
         $roleG = Role::create(['name' => 'Gerente']);
         $roleE = Role::create(['name' => 'Empleado']);
 
-        Permission::create(['name' => 'admin.home'])->syncRoles([$roleE, $roleA, $roleG]);
+        Permission::create(['name' => 'admin.home'])->syncRoles([$roleE, $roleG]);
 
-        Permission::create(['name' => 'admin.categorias.index'])->syncRoles([$roleA, $roleG]);
-        Permission::create(['name' => 'admin.categorias.create'])->syncRoles([$roleA, $roleG]);
-        Permission::create(['name' => 'admin.categorias.edit'])->syncRoles([$roleA, $roleG]);
-        Permission::create(['name' => 'admin.categorias.destroy'])->syncRoles([$roleA, $roleG]);
+        Permission::create(['name' => 'admin.users.index'])->syncRoles([$roleG]);
+        Permission::create(['name' => 'admin.users.create'])->syncRoles([$roleG]);
+        Permission::create(['name' => 'admin.users.edit'])->syncRoles([$roleG]);
 
-        Permission::create(['name' => 'admin.productos.index'])->syncRoles([$roleA, $roleG]);
-        Permission::create(['name' => 'admin.productos.create'])->syncRoles([$roleA, $roleG]);
-        Permission::create(['name' => 'admin.productos.edit'])->syncRoles([$roleA, $roleG]);
-        Permission::create(['name' => 'admin.productos.destroy'])->syncRoles([$roleA, $roleG]);
+        Permission::create(['name' => 'admin.categorias.index'])->syncRoles([$roleG]);
+        Permission::create(['name' => 'admin.categorias.create'])->syncRoles([$roleG]);
+        Permission::create(['name' => 'admin.categorias.edit'])->syncRoles([$roleG]);
+        Permission::create(['name' => 'admin.categorias.destroy'])->syncRoles([$roleG]);
+
+        Permission::create(['name' => 'admin.productos.index'])->syncRoles([$roleG]);
+        Permission::create(['name' => 'admin.productos.create'])->syncRoles([$roleG]);
+        Permission::create(['name' => 'admin.productos.edit'])->syncRoles([$roleG]);
+        Permission::create(['name' => 'admin.productos.destroy'])->syncRoles([$roleG]);
         
     }
 }

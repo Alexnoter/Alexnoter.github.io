@@ -14,6 +14,7 @@
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>PRECIO VENTA</th>
+                        <th>PRECIO COMPRA</th>
                         <th>STOCK</th>
                         <th colspan="2"></th>
                     </tr>
@@ -25,6 +26,7 @@
                             <td>{{ $producto->id }}</td>
                             <td>{{ $producto->nombre }}</td>
                             <td>{{ $producto->precioVenta }}</td>
+                            <td>{{ $producto->precioCompra }}</td>
                             <td>{{ $producto->stock }}</td>
                             <td with='10px'>
                                 <a  class="btn btn-primary btn-sm" href="{{ route('admin.productos.edit', $producto) }}">Editar</a>

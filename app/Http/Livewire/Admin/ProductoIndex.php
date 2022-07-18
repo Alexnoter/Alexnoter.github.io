@@ -28,9 +28,8 @@ class ProductoIndex extends Component
 
     public function render()
     {
-        $productos = Producto::where('id', '>', 0)
+        $productos = Producto::where('nombre', 'LIKE', '%' . $this->search . '%')
                                 ->latest('id')
-                                ->where('nombre', 'LIKE', '%' . $this->search . '%')
                                 ->paginate(15);
 
         return view('livewire.admin.producto-index', compact('productos'));

@@ -251,27 +251,32 @@ return [
             'url'         => 'admin/',
             'icon'        => 'fas fa-tachometer-alt fa-fw',
             'label_color' => 'success',
+            'can'         => 'admin.home'
         ],
         ['header' => 'ADMINISTRADOR'],
         [
             'text' => 'Categorias',
             'route'  => 'admin.categorias.index',
             'icon' => 'fab fa-fw fa-buffer',
+            'can' => 'admin.categorias.index'
         ],
         [
             'text' => 'Usuarios',
             'route'  => 'admin.users.index',
             'icon' => 'fas fa-fw fa-users',
+            'can' => 'admin.users.index'
         ],
         [
             'text' => 'Productos',
             'route'  => 'admin.productos.index',
             'icon' => 'fas fa-fw fa-archive',
+            'can' => 'admin.productos.index'
         ],
         [
             'text' => 'Crear producto',
             'route'  => 'admin.productos.create',
             'icon' => 'fas fa-box-open',
+            'can' => 'admin.productos.create'
         ],
         
     ],
