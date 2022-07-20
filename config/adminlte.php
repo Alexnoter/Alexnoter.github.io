@@ -277,7 +277,13 @@ return [
             'icon' => 'fas fa-fw fa-book',
         ],
         [
-            'text' => 'Compra de Productos',
+            'text' => 'Compras',
+            'route'  => 'admin.compras.create',
+            'icon' => 'fab fa-fw fa-buffer',
+            
+        ],
+        [
+            'text' => 'Historial de Compras',
             'route'  => 'admin.compras.index',
             'icon' => 'fab fa-fw fa-buffer',
             
