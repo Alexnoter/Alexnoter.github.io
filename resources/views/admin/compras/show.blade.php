@@ -3,13 +3,13 @@
 @section('title', 'Bienvenido')
 
 @section('content_header')
-    <h1>inventario</h1>
+    <h1>Lista de Compras</h1>
 @stop
 
 @section('content')
 
-    @livewire('admin.historial-venta')
-
+    {{ $compra->PrecioCompra }}
+    
 @stop
 
 @section('css')

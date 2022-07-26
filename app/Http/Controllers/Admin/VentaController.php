@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Client;
+use App\Models\Producto;
+use App\Models\Venta;
 use Illuminate\Http\Request;
 
 class VentaController extends Controller
@@ -14,7 +17,7 @@ class VentaController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.ventas.index');
     }
 
     /**
@@ -24,7 +27,7 @@ class VentaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.ventas.create');
     }
 
     /**
@@ -35,7 +38,14 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Venta::create($request->all());
+
+        $producto = Producto::find($request->producto_id);
+        $producto->stock = $producto->stock - $request->cantidad;
+        $producto->save();
+
+        Client::create($request->all());
+        return redirect()->route('admin.home');
     }
 
     /**
@@ -44,9 +54,9 @@ class VentaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Venta $venta)
     {
-        //
+        return view('admin.ventas.show', compact('venta'));
     }
 
     /**

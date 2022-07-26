@@ -32,16 +32,7 @@
     @error('precioVenta')
         <small class="text-danger">{{ $message }}</small>
     @enderror
-
-</div>
-<div class="form-group">
-    {!! Form::label('precioCompra', 'Precio de compra :') !!}
-    {!! Form::number('precioCompra', null, ['class' => 'form-control', 'placeholder' => '00.00', 'step' => '.01']) !!}
-
-    @error('precioCompra')
-        <small class="text-danger">{{ $message }}</small>
-    @enderror
-
+    
 </div>
 <div class="form-group">
     {!! Form::label('categoria_id', 'Categorias') !!}

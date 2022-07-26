@@ -31,7 +31,7 @@ class ProductoFactory extends Factory
             'descripcion' => $this->faker->text(),
             'estado' => $this->faker->randomElement(['1', '2']),
             'precioVenta' => $this->faker->randomElement([19.99, 49.99, 99.99]),
-            'precioCompra' => $this->faker->randomElement([15.99, 35.99, 80.99]),
+            
             'categoria_id' => $categoria->id
 
         ];

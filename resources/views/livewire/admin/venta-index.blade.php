@@ -22,23 +22,19 @@
 
                 <tbody>
                     @foreach ($productos as $producto)
-                        <tr>
-                            <td>{{ $producto->id }}</td>
-                            <td>{{ $producto->nombre }}</td>
-                            <td>{{ $producto->precioVenta }}</td>
-                            
-                            <td>{{ $producto->stock }}</td>
-                            <td with='10px'>
-                                <a  class="btn btn-primary btn-sm" href="{{ route('admin.productos.edit', $producto) }}">Editar</a>
-                            </td>
-                            <td with='10px'>
-                                <form action="{{ route('admin.productos.destroy', $producto) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
-                                </form>
-                            </td>
-                        </tr>
+                        @if ($producto->estado == 2)
+                            <tr>
+                                <td>{{ $producto->id }}</td>
+                                <td>{{ $producto->nombre }}</td>
+                                <td>{{ $producto->precioVenta }}</td>
+                                
+                                <td>{{ $producto->stock }}</td>
+                                <td with='10px'>
+                                    <a  class="btn btn-primary btn-sm" href="{{ route('admin.productos.show', $producto) }}">ver</a>
+                                </td>
+                                
+                            </tr>
+                        @endif
                     @endforeach
                 </tbody>
 

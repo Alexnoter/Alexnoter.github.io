@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Client;
+use App\Models\Producto;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,12 +21,18 @@ class VentaFactory extends Factory
     {
 
         $usuario = User::all()->random();
-        $cliente = Client::all()->random();
+        $client = Client::all()->random();
+        $producto = Producto::all()->random();
+        $cantidad = $this->faker->randomElement([1,2,3,4,5,6]);
+        
 
         return [
-            'PrecioVenta' => $this->faker->randomFloat(2,14.99,500),
+            'cantidad'  => $cantidad,
+            
+            'precio' => $cantidad * $producto->precioVenta,
             'user_id' => $usuario->id,
-            'client_id' => $cliente->id,
+            'client_id' => $client->id,
+            'producto_id' => $producto->id
         ];
     }
 }

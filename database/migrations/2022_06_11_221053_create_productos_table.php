@@ -21,9 +21,8 @@ return new class extends Migration
             $table->integer('stock')->nullable();
 
             $table->text('descripcion')->nullable();
-            $table->enum('estado',[1, 2])->default(1);
+            $table->enum('estado',[1, 2]);
             $table->float('precioVenta')->nullable();
-            $table->float('precioCompra')->nullable();
 
             $table->unsignedBigInteger('categoria_id');
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');

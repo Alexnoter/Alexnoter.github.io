@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Compra;
+use App\Models\Producto;
+use App\Models\Proveedore;
 use Illuminate\Http\Request;
 
 class CompraController extends Controller
@@ -24,6 +27,8 @@ class CompraController extends Controller
      */
     public function create()
     {
+        
+
         return view('admin.compras.create');
     }
 
@@ -35,7 +40,18 @@ class CompraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Compra::create($request->all());
+
+        $producto = Producto::find($request->producto_id);
+
+        $producto->stock = $producto->stock + $request->cantidad;
+        
+        $producto->save();
+        
+        
+
+        return redirect()->route('admin.compras.index');
+
     }
 
     /**
@@ -44,7 +60,7 @@ class CompraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($producto)
     {
         //
     }
@@ -55,7 +71,7 @@ class CompraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($producto)
     {
         //
     }

@@ -10,7 +10,7 @@
     <div class="card">
         <div class="card-body">
             {!! Form::model($producto, ['route' => ['admin.productos.update', $producto], 'autocomplete' =>  'off', 'method' => 'put']) !!}
-
+                
                 @include('admin.productos.partes.form')
                 
                 {!! Form::submit('Actualizar producto', ['class' => 'btn btn-primary']) !!}

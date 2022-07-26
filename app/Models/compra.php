@@ -22,9 +22,9 @@ class Compra extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    /* muchos a muchos */
-    public function productos()
+    
+    public function producto()
     {
-        return $this->belongsToMany(Producto::class, 'producto_id');
+        return $this->belongsTo(Producto::class, 'producto_id');
     }
 }

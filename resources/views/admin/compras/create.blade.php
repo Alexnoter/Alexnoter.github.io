@@ -3,17 +3,22 @@
 @section('title', 'Bienvenido')
 
 @section('content_header')
+    
     <h1>Compras de Productos</h1>
 @stop
 
 @section('content')
-    {!! Form::open(['route' => 'admin.compras.store', 'autocomplete' => 'off']) !!}
-    
-        @livewire('admin.compras-create')
-
-        {!! Form::submit('Crear Compra', ['class' => 'btn btn-primary']) !!}
-
-    {!! Form::close() !!}
+    <div class="card">
+        <div class="card-body">
+            {!! Form::open(['route' => 'admin.compras.store']) !!}
+            
+                {!! Form::hidden('user_id', auth()->user()->id) !!}
+                @livewire('admin.form-c-v')
+                {!! Form::submit('comprar', ['class' => 'btn btn-primary']) !!}
+            {!! Form::close() !!}
+        </div>
+        
+    </div>
     
 @stop
 

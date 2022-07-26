@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Producto;
 use App\Models\Proveedore;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -21,12 +22,17 @@ class CompraFactory extends Factory
 
         $usuario = User::all()->random();
         $proveedore = Proveedore::all()->random();
+        $producto = Producto::all()->random();
+        $cantidad = $this->faker->randomElement([1,2,3,4]);
+        $precio = $this->faker->randomFloat(2 , 15 , 99);
 
         return [
-            
-            'PrecioCompra' => $this->faker->randomFloat(2,100,2000),
+            'cantidad'  => $cantidad,
+            'precio' => $precio,
+            'PrecioCompra' => $cantidad * $precio,
             'user_id' => $usuario->id,
             'proveedore_id' => $proveedore->id,
+            'producto_id' => $producto
 
         ];
     }

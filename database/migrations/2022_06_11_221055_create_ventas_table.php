@@ -16,14 +16,16 @@ return new class extends Migration
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
 
-            $table->float('PrecioVenta');
+            $table->float('precio');
+            $table->integer('cantidad');
 
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('client_id');
+            $table->unsignedBigInteger('client_id')->nullable();
+            $table->unsignedBigInteger('producto_id')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
-
+            $table->foreign('producto_id')->references('id')->on('productos')->onDelete('set null');
             $table->timestamps();
         });
     }

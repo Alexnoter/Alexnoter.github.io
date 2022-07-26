@@ -16,13 +16,17 @@ return new class extends Migration
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
 
-            $table->float('PrecioCompra');
+            $table->float('PrecioCompra')->nullable();
+            $table->float('precio');
+            $table->integer('cantidad');
 
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('proveedore_id')->nullable();
+            $table->unsignedBigInteger('producto_id')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->foreign('proveedore_id')->references('id')->on('proveedores')->onDelete('set null');
+            $table->foreign('producto_id')->references('id')->on('productos')->onDelete('set null');
 
             $table->timestamps();
         });

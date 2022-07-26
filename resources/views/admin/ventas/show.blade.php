@@ -3,13 +3,12 @@
 @section('title', 'Bienvenido')
 
 @section('content_header')
-    <h1>inventario</h1>
+    <h1>Extracto</h1>
 @stop
 
 @section('content')
-
-    @livewire('admin.historial-venta')
-
+    
+    
 @stop
 
 @section('css')

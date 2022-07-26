@@ -3,7 +3,7 @@
         <input wire:model="search" class="form-control" placeholder="ingrese el nombre del usuario">
     </div>
 
-    @if ($compras->count())
+    @if ($ventas->count())
         
         <div class="card-body">
             <table class="table table-striped">
@@ -12,22 +12,22 @@
                         <th>ID</th>
                         <th>PERSONAL</th>
                         <th>COSTO</th>
-                        <th>PROVEEDOR</th>
+                        <th>CANT</th>
                         
                         <th></th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($compras as $compra)
+                    @foreach ($ventas as $venta)
                         <tr>
-                            <td>{{ $compra->id }}</td>
-                            <td>{{ $compra->user->name }}</td>
-                            <td>{{ $compra->PrecioCompra }}</td>
-                            <td>{{ $compra->proveedore->nombre }}</td>
+                            <td>{{ $venta->id }}</td>
+                            <td>{{ $venta->user->name }}</td>
+                            <td>{{ $venta->precio }}</td>
+                            <td>{{ $venta->cantidad }}</td>
                     
                             <td >
-                                <a class="btn btn-primary" href="{{ route('admin.compras.show', $compra) }}">Ver</a>
+                                <a class="btn btn-primary" href="{{ route('admin.ventas.show', $venta) }}">Ver</a>
                             </td>
                             
                         </tr>
@@ -37,7 +37,7 @@
         </div>
 
         <div class="card-footer">
-            {{ $compras->links() }}
+            {{ $ventas->links() }}
         </div>
 
     @else

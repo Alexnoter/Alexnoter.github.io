@@ -39,7 +39,6 @@ class ProductoRequest extends FormRequest
             $reglas = array_merge($reglas, [
                 'stock' => 'required',
                 'precioVenta' => 'required',
-                'precioCompra' => 'required',
                 'categoria_id' => 'required',
                 'descripcion' => 'required'                
             ]);

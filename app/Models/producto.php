@@ -18,7 +18,7 @@ class Producto extends Model
 
     public function compras()
     {
-        return $this->belongsToMany(Compra::class, 'compra_id');
+        return $this->hasMany(Compra::class, 'compra_id');
     }
 
     /* uno a muchos inversa */
@@ -27,9 +27,5 @@ class Producto extends Model
         return $this->belongsTo(Categoria::class, 'categoria_id');
     }
 
-    /* relacion uno a muchos polimorfica */
-    public function images()
-    {
-        return $this->morphMany(Image::class, 'imageable');
-    }
+    
 }
