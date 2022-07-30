@@ -3,7 +3,7 @@
 @section('title', 'Bienvenido')
 
 @section('content_header')
-    <h1>Formulario de ventas</h1>
+    <h1>Venta de productos</h1>
 @stop
 
 @section('content')

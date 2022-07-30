@@ -4,7 +4,7 @@
 
 @section('content_header')
     
-    <h1>Compras de Productos</h1>
+    <h1>Compra de Productos</h1>
 @stop
 
 @section('content')

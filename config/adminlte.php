@@ -258,7 +258,7 @@ return [
             'icon'    => 'fas fa-balance-scale-right',
             'submenu' => [
                 [
-                    'text' => 'Historial de compras',
+                    'text' => 'Historial de ventas',
                     'route'  => 'admin.ventas.index',
                     'icon' => 'fab fa-fw fa-buffer',
                     
